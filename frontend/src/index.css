@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background: #0a0c0f;
+  color: #c8e6c9;
+  font-family: 'Rajdhani', sans-serif;
+  overflow-x: hidden;
+}
+
+/* CRT scanline overlay, same as the prototype */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.15) 2px, rgba(0, 0, 0, 0.15) 4px);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@keyframes flicker {
+  0%, 95%, 100% { opacity: 1; }
+  96% { opacity: 0.6; }
+  97% { opacity: 1; }
+  98% { opacity: 0.4; }
+  99% { opacity: 1; }
+}
+.animate-flicker { animation: flicker 4s infinite; }
+
+@keyframes pulse-fast {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.animate-pulse-fast { animation: pulse-fast 0.5s infinite; }
+
+.text-glow-green { text-shadow: 0 0 12px #00ff41; }
+.text-glow-green-lg { text-shadow: 0 0 20px #00ff41, 0 0 60px #00cc33; }
+.text-glow-red { text-shadow: 0 0 12px #ff3c3c; }
+.text-glow-amber { text-shadow: 0 0 12px #ffb700; }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #0f1318; }
+::-webkit-scrollbar-thumb { background: #1e2d20; border-radius: 4px; }
